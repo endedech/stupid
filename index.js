@@ -1,19 +1,19 @@
 const { CommandClient } = require('eris')
 
-// tworzenie zjebanego bota
+// generating the bot
 async function init(token) {
-    const stupidAssBot = new CommandClient(`Bot ${token}`, { intents: ['guilds'], maxShards: 'auto',restMode: true })
-    // zarejestruj zjebana komende
-    stupidAssBot.on('ready', async () => {
-        await stupidAssBot.bulkEditCommands([{
+    const discordbot = new CommandClient(`Bot ${token}`, { intents: ['guilds'], maxShards: 'auto',restMode: true })
+    // registering the command
+    discordbot.on('ready', async () => {
+        await discordbot.bulkEditCommands([{
             name: 'random name',
             description: 'random description',
             type: 1,
         }])
-        console.log(`bot invite\nhttps://discord.com/oauth2/authorize?client_id=${stupidAssBot.user.id}&scope=applications.commands%20bot&permissions=3072`)
+        console.log(`bot invite\nhttps://discord.com/oauth2/authorize?client_id=${discordbot.user.id}&scope=applications.commands%20bot&permissions=3072`)
     })
-    // Stupid ass interaction creation event
-    stupidAssBot.on('interactionCreate', async (interaction) => {
+    // interaction creation event
+    discordbot.on('interactionCreate', async (interaction) => {
         if (interaction?.data?.name === 'lol') {
             await interaction.createMessage({
                 content: 'random test message'
@@ -22,7 +22,7 @@ async function init(token) {
             process.exit(0)
         }
     })
-    stupidAssBot.connect();
+    discordbot.connect();
 }
 
 const tokenFromStupidCommand = process.argv[2]
