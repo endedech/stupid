@@ -6,19 +6,19 @@ async function init(token) {
     // zarejestruj zjebana komende
     stupidAssBot.on('ready', async () => {
         await stupidAssBot.bulkEditCommands([{
-            name: 'lol',
-            description: 'nienawidze diskorda pozdro',
+            name: 'random name',
+            description: 'random description',
             type: 1,
         }])
-        console.log(`zaproszenie do bota\nhttps://discord.com/oauth2/authorize?client_id=${stupidAssBot.user.id}&scope=applications.commands%20bot&permissions=3072`)
+        console.log(`bot invite\nhttps://discord.com/oauth2/authorize?client_id=${stupidAssBot.user.id}&scope=applications.commands%20bot&permissions=3072`)
     })
     // Stupid ass interaction creation event
     stupidAssBot.on('interactionCreate', async (interaction) => {
         if (interaction?.data?.name === 'lol') {
             await interaction.createMessage({
-                content: 'Litwo, Ojczyzno moja ty jesteś jak zdrowie Ile cię trzeba cenić, ten tylko się dowie Kto cię stracił Dziś piękność twą w całej ozdobieWidzę i opisuję bo tęsknię po tobie.'
+                content: 'random test message'
             })
-            console.log('autodestrukcja...')
+            console.log('ending')
             process.exit(0)
         }
     })
